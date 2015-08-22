@@ -25,7 +25,7 @@
 ;;; Code:
 
 (require 'go-mode)
-(require 'gotest)
+(require 'compile)
 (require 'time-stamp)
 
 (define-minor-mode go-playground-mode
@@ -38,8 +38,27 @@
 (defun go-playground-save-and-run ()
   (interactive)
   (save-buffer t)
-  (go-run))
-  
+  (make-local-variable 'compile-command)       
+  (compile (concat go-command " run *.go")))
+
+;; draft
+(defun go-playground-print-unused ()
+  (interactive)
+  (save-buffer t)
+  (let ((snippet-buf (current-buffer)) (compile-buf (compile (go-run-get-program (go-run-arguments)))))
+    (set-buffer compile-buf)
+    (looking-at "^.*:[0-9]+: \\([_.a-zA-Z0-9]+\\) declared and not used")
+    (let ((not-used-var (match-string 0)))
+            (set-buffer snippet-buf)
+      (insert not-used-var))))
+      
+
+(defun go-playground-send-to-play.golang.org ()
+  (interactive)
+  (goto-char (point-min))
+  (forward-line)
+  (insert (go-play-buffer)))
+       
 (defgroup go-playground nil
    "Options specific to `go-playground`."
   :group 'go)
