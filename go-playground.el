@@ -84,7 +84,8 @@
   (interactive)
   (let ((snippet-file-name (concat (go-playground-snippet-unique-dir) "/snippet.go")))
     (switch-to-buffer (create-file-buffer snippet-file-name))
-    (insert "// snippet of code
+    (insert "// -*- mode:go;mode:go-playground -*-
+// snippet of code @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
 // run snippet with Ctl-Return 
 
 package main
