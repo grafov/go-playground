@@ -1,7 +1,7 @@
 # go-playground
 
-Very simple Emacs mode for local golang playground similar
-to play.golang.org. It just uses `go-mode` and all its benefits.
+Very simple Emacs mode for local [Go language](http://golang.org) playground similar
+to [play.golang.org](http://play.golang.org). It just uses `go-mode` and all its benefits.
 I recommend to use `goimports` for
 automatic imports.
 
