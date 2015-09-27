@@ -81,11 +81,13 @@
   :group 'go-playground)
 
 (defun go-playground ()
+  "Run playground for Go language in a new buffer."
   (interactive)
   (let ((snippet-file-name (concat (go-playground-snippet-unique-dir) "/snippet.go")))
     (switch-to-buffer (create-file-buffer snippet-file-name))
     (insert "// -*- mode:go;mode:go-playground -*-
 // snippet of code @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
+// 
 // run snippet with Ctl-Return 
 
 package main
@@ -99,12 +101,17 @@ func main() {
     (go-playground-mode)
     (set-visited-file-name snippet-file-name t)))
 
+(defun go-playground-remove-current-snippet ()
+  "Remove files of the current snippet together with directory of this snippet."
+  (interactive)
+  (save-buffer)
+  (delete-directory (file-name-directory (buffer-file-name)) t t)
+  (kill-buffer))
 
 (defun go-playground-snippet-unique-dir ()
   (let ((dir-name (concat go-playground-basedir "/" (time-stamp-string "%:y-%02m-%02d-%02H:%02M:%02S"))))
     (make-directory dir-name t)
     dir-name))
-
 
 (provide 'go-playground)
 ;;; go-playground.el ends here
