@@ -5,6 +5,7 @@
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
+;; Package-Requires: ((emacs "24") (go-mode "1.0.0") (gotest "0.40.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,6 +39,7 @@
 ;;; Code:
 
 (require 'go-mode)
+(require 'gotest)
 (require 'compile)
 (require 'time-stamp)
 
