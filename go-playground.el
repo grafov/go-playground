@@ -82,6 +82,7 @@
   "Base directory for playground snippets. Better to set it under GOPATH."
   :group 'go-playground)
 
+;;;###autoload
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
   (interactive)
@@ -103,6 +104,7 @@ func main() {
     (go-playground-mode)
     (set-visited-file-name snippet-file-name t)))
 
+;;;###autoload
 (defun go-playground-remove-current-snippet ()
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
