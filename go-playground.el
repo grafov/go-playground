@@ -5,6 +5,7 @@
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
+;; Package-Requires: ((emacs "24") (go-mode "1.0.0") (gotest "0.40.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -38,6 +39,7 @@
 ;;; Code:
 
 (require 'go-mode)
+(require 'gotest)
 (require 'compile)
 (require 'time-stamp)
 
@@ -80,6 +82,7 @@
   "Base directory for playground snippets. Better to set it under GOPATH."
   :group 'go-playground)
 
+;;;###autoload
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
   (interactive)
@@ -101,6 +104,7 @@ func main() {
     (go-playground-mode)
     (set-visited-file-name snippet-file-name t)))
 
+;;;###autoload
 (defun go-playground-remove-current-snippet ()
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)

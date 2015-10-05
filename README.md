@@ -7,7 +7,7 @@ I recommend to use `goimports` for automatically add import clauses to your snip
 You may share snippets with `go-play-buffer` from `go-mode`
 and publish gists with `gist-buffer` (install it separately from melpa).
 
-`go-playground` needs `go-mode` package installed.
+`go-playground` needs `go-mode` and `gotest` package installed.
 
 ## Usage
 
