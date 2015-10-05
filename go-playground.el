@@ -1,4 +1,4 @@
-;;; go-playground.el --- Local Golang playground for short snippets.  -*- lexical-binding: t; -*-
+;;; go-playground.el --- Local Golang playground for short snippets.
 
 ;; Copyright (C) 2015  Alexander I.Grafov (axel)
 
