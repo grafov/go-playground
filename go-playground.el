@@ -96,7 +96,7 @@
 package main
 
 func main() {
-  
+	
 }
 ")
     (backward-char 3)
