@@ -1,4 +1,4 @@
-# Local Golang playground
+# Local Golang playground [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
 Simple Emacs mode for local [Go language](http://golang.org) playground similar
 to [play.golang.org](http://play.golang.org). It just uses `go-mode` and all its benefits.
