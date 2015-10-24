@@ -51,13 +51,14 @@
   (setq mode-name "Play(Go)"))
 
 (defun go-playground-save-and-run ()
-  (interactive)
+  "Run go compiler on a current buffer."
   (save-buffer t)
-  (make-local-variable 'compile-command)       
+  (make-local-variable 'compile-command)
   (compile (concat go-command " run *.go")))
 
 ;; draft
 (defun go-playground-print-unused ()
+  "Uncompleted function in development.  Don't use it."
   (interactive)
   (save-buffer t)
   (let ((snippet-buf (current-buffer)) (compile-buf (compile (go-run-get-program (go-run-arguments)))))
@@ -79,7 +80,7 @@
   :group 'go)
 
 (defcustom go-playground-basedir "~/go/src/playground"
-  "Base directory for playground snippets. Better to set it under GOPATH."
+  "Base directory for playground snippets.  Better to set it under GOPATH."
   :group 'go-playground)
 
 ;;;###autoload
@@ -113,6 +114,7 @@ func main() {
   (kill-buffer))
 
 (defun go-playground-snippet-unique-dir ()
+  "Get unique directory under GOPATH/`go-playground-basedir`."
   (let ((dir-name (concat go-playground-basedir "/" (time-stamp-string "%:y-%02m-%02d-%02H:%02M:%02S"))))
     (make-directory dir-name t)
     dir-name))
