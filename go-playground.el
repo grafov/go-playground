@@ -52,6 +52,7 @@
 
 (defun go-playground-save-and-run ()
   "Run go compiler on a current buffer."
+  (interactive)
   (save-buffer t)
   (make-local-variable 'compile-command)
   (compile (concat go-command " run *.go")))
@@ -70,7 +71,7 @@
       
 
 (defun go-playground-send-to-play.golang.org ()
-  (interactive)
+   (interactive)
   (goto-char (point-min))
   (forward-line)
   (insert (go-play-buffer)))
