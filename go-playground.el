@@ -4,6 +4,7 @@
 
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
+;; Package-Version: 20151031.1410
 ;; Keywords: tools, golang
 ;; Package-Requires: ((emacs "24") (go-mode "1.0.0") (gotest "0.40.0"))
 
@@ -34,7 +35,7 @@
 
 ;; You may push code to play.golang.org with go-mode' function `go-play-buffer`.
 
-;; 
+;;
 
 ;;; Code:
 
@@ -43,12 +44,27 @@
 (require 'compile)
 (require 'time-stamp)
 
+(defcustom go-playground-ask-for-file-name nil
+  "Non-nil means we ask for a name for the snippet.
+
+By default it will be created as snippet.go"
+  :type 'boolean
+  :group 'go-playground)
+
+
 (define-minor-mode go-playground-mode
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
   :lighter ""
   :keymap '(([C-return] . go-playground-save-and-run))
   (setq mode-name "Play(Go)"))
+
+(defun go-playground-snippet-file-name(&optional snippet-name)
+  (let ((file-name (cond (snippet-name)
+                         (go-playground-ask-for-file-name
+                          (read-string "Go Playground filename: "))
+                         ("snippet"))))
+    (concat (go-playground-snippet-unique-dir) "/" file-name ".go")))
 
 (defun go-playground-save-and-run ()
   "Run go compiler on a current buffer."
@@ -66,18 +82,17 @@
     (set-buffer compile-buf)
     (looking-at "^.*:[0-9]+: \\([_.a-zA-Z0-9]+\\) declared and not used")
     (let ((not-used-var (match-string 0)))
-            (set-buffer snippet-buf)
+      (set-buffer snippet-buf)
       (insert not-used-var))))
-      
 
 (defun go-playground-send-to-play.golang.org ()
-   (interactive)
+  (interactive)
   (goto-char (point-min))
   (forward-line)
   (insert (go-play-buffer)))
-       
+
 (defgroup go-playground nil
-   "Options specific to `go-playground`."
+  "Options specific to `go-playground`."
   :group 'go)
 
 (defcustom go-playground-basedir "~/go/src/playground"
@@ -88,17 +103,17 @@
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
   (interactive)
-  (let ((snippet-file-name (concat (go-playground-snippet-unique-dir) "/snippet.go")))
+  (let ((snippet-file-name (go-playground-snippet-file-name)))
     (switch-to-buffer (create-file-buffer snippet-file-name))
     (insert "// -*- mode:go;mode:go-playground -*-
 // snippet of code @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
-// 
-// run snippet with Ctl-Return 
+//
+// run snippet with Ctl-Return
 
 package main
 
 func main() {
-	
+
 }
 ")
     (backward-char 3)
