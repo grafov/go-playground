@@ -4,7 +4,6 @@
 
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
-;; Package-Version: 20151031.1410
 ;; Keywords: tools, golang
 ;; Package-Requires: ((emacs "24") (go-mode "1.0.0") (gotest "0.40.0"))
 
@@ -64,7 +63,7 @@ By default it will be created as snippet.go"
                          (go-playground-ask-for-file-name
                           (read-string "Go Playground filename: "))
                          ("snippet"))))
-    (concat (go-playground-snippet-unique-dir) "/" file-name ".go")))
+    (concat (go-playground-snippet-unique-dir file-name) "/" file-name ".go")))
 
 (defun go-playground-save-and-run ()
   "Run go compiler on a current buffer."
@@ -129,9 +128,11 @@ func main() {
   (delete-directory (file-name-directory (buffer-file-name)) t t)
   (kill-buffer))
 
-(defun go-playground-snippet-unique-dir ()
+(defun go-playground-snippet-unique-dir (prefix)
   "Get unique directory under GOPATH/`go-playground-basedir`."
-  (let ((dir-name (concat go-playground-basedir "/" (time-stamp-string "%:y-%02m-%02d-%02H:%02M:%02S"))))
+  (let ((dir-name (concat go-playground-basedir "/"
+                          (if (and prefix go-playground-ask-for-file-name) (concat prefix "-"))
+                          (time-stamp-string "%:y-%02m-%02d-%02H:%02M:%02S"))))
     (make-directory dir-name t)
     dir-name))
 
