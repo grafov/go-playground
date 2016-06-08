@@ -31,8 +31,6 @@ Install `go-playground` from MELPA:
 If you want share snippets use `go-play-buffer` from `go-mode`.
 Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
-`go-playground` needs `go-mode` and `gotest` package installed.
-
 ## Usage
 
 * `M-x go-playground` for start playground buffer for a new snippet from any mode
