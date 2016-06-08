@@ -20,9 +20,9 @@ So with local go-playground you get:
 ## Install
 
 Firstly install `go-mode` and `gotest` — these are mandatory. Setup any additional tools you want for Golang
-(see Emacs Wiki for guides or google it for "emacs+golang"). Personally I recommend use `goimports` for
+(see Emacs Wiki for guides or google for "emacs+golang"). Personally I recommend use `goimports` for
 automatically add import clauses to your snippets. Because usually when you test some ideas you want get
-working code as fast as possible. And `go-playground` helps with it.
+working code as fast as possible. And `goimports` helps with it.
 
 Install `go-playground` from MELPA:
 
