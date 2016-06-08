@@ -3,8 +3,8 @@
 Simple Emacs mode for local [Go language](http://golang.org) playground similar
 to [play.golang.org](http://play.golang.org).
 
-Web playground at play.golang.org nice idea. It has not requires setup and it executes your code
-in a restricted environment where you can't damage you system. But it apply many restrictions too.
+Web playground at play.golang.org is nice idea. It has not require setup and it executes your code
+in a restricted environment where you can't damage you system. But it brings many restrictions too.
 Local playground requres you to setup Go environment but if you developing in Go (or want to do it)
 you are anyway need setup `go-mode` and helper modes for working with code in a comfort way.
 
