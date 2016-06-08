@@ -41,6 +41,10 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
 Mode not offers default bindings except `Ctl-Return`. Just left it for you.
 
+## Similar projects
+
+Try [go-scratch](https://github.com/shosti/go-scratch.el) it even simplier than `go-playground`. But it prevents you from using many of tools because it not keeps code in files.
+
 ## Licence
 
 Under terms of GPL v3. See LICENSE file.
