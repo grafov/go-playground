@@ -11,7 +11,7 @@ you are anyway need setup `go-mode` and helper modes for working with code in a 
 So with local go-playground you get:
 
 * all features you have for `go-mode` will work in `go-playground`
-* you can keep snippets library locally under GOPATH
+* you can't lose your snippet code because it saved to file and just can keep snippets&recipes library locally
 * there are no containers and no restrictions on compile time so you can test the complex code
 * you are free for using any external packages from your GOPATH
 * you feel free for publishing your snippets to play.golang.org
