@@ -1,7 +1,8 @@
 # Local Golang playground [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
-Simple Emacs mode for local [Go language](http://golang.org) playground similar
-to [play.golang.org](http://play.golang.org).
+The simple mode for GNU/Emacs for local [Go language](http://golang.org) playground with features similar 
+to [play.golang.org](http://play.golang.org). This is not a wrapper for working with play.golang.org from Emacs,
+this is complete alternative for setting local playground inside Emacs.
 
 Web playground at play.golang.org is nice idea. It has not require setup and it executes your code
 in a restricted environment where you can't damage you system. But it brings many restrictions too.
