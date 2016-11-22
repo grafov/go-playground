@@ -36,7 +36,7 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
 * `M-x go-playground` for start playground buffer for a new snippet from any mode
 * `Ctl-Return` for compile and run your code
-* `M-x go-playground-remove-current-snippet` for removing current snippet (with its directory and all files) after you done with it
+* `M-x go-playground-rm` for removing the current snippet (with its directory and all files) after you done with it
 
 Mode not offers default bindings except `Ctl-Return`. Just left it for you.
 
