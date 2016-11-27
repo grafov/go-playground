@@ -98,6 +98,7 @@ By default it will be created as snippet.go"
   "Base directory for playground snippets.  Better to set it under GOPATH."
   :group 'go-playground)
 
+;;;###autoload
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
   (interactive)
