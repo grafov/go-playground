@@ -1,6 +1,6 @@
 ;;; go-playground.el --- Local Golang playground for short snippets.
 
-;; Copyright (C) 2015  Alexander I.Grafov (axel)
+;; Copyright (C) 2015-2016  Alexander I.Grafov (axel)
 
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
@@ -91,7 +91,7 @@ By default it will be created as snippet.go"
   (insert (go-play-buffer)))
 
 (defgroup go-playground nil
-  "Options specific to `go-playground`."
+  "Options specific to Go Playground."
   :group 'go)
 
 (defcustom go-playground-basedir "~/go/src/playground"
@@ -112,9 +112,12 @@ package main
 // Execute the snippet with Ctl-Return
 // Remove this snippet completely with M-x `go-playground-rm`
 
-import ()
+import (
+    \"fmt\"
+)
 
 func main() {
+    fmt.Println(\"Results:\")
 
 }
 ")
