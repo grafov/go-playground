@@ -11,12 +11,11 @@ you are anyway need setup `go-mode` and helper modes for working with code in a 
 
 So with local go-playground you get:
 
-* all features you have for `go-mode` will work in `go-playground`
-* you can't lose your snippet code because it saved to a file and even can keep snippets&recipes library locally
-* there are no containers and no restrictions on compile time so you can test the complex code
-* you are free for using any external packages from your GOPATH
-* you feel free for publishing your snippets to play.golang.org
-
+* all features of `go-mode` will work in `go-playground`
+* snippets saved in the subdirectory under GOPATH, it helps you keep library of interesting snippets
+* you can split the snippet code on any number of files
+* no containers and no restrictions on compile time so you can test the complex code
+* free for using any external packages from your GOPATH
 
 ## Install
 
@@ -38,7 +37,11 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 * `Ctl-Return` for compile and run your code
 * `M-x go-playground-rm` for removing the current snippet (with its directory and all files) after you done with it
 
-Mode not offers default bindings except `Ctl-Return`. Just left it for you.
+Mode not offers default bindings except `Ctl-Return`. Just left the space for you.
+
+For easy running the template declares `main` package with defined `main()` function. Each snippet saved to its own
+directory (named by timestamp by default). Remember `go-playground` runs the compiler as `go run *.go` so any sources
+from the snippet directory will be included.
 
 ## Similar projects
 
