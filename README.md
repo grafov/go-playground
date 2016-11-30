@@ -1,7 +1,7 @@
 # Local Golang playground [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
-The simple mode for GNU/Emacs for local [Go language](http://golang.org) playground with features similar 
-to [play.golang.org](http://play.golang.org). This is not a wrapper for working with play.golang.org from Emacs,
+The simple mode for GNU/Emacs for setting up local [Go language](http://golang.org) playground with features similar 
+(and with help of `go-mode` even outperform!) to [play.golang.org](http://play.golang.org). This is not a wrapper for working with play.golang.org from Emacs,
 this is complete alternative for setting local playground inside Emacs.
 
 Web playground at play.golang.org is nice idea. It has not require setup and it executes your code
@@ -11,7 +11,7 @@ you are anyway need setup `go-mode` and helper modes for working with code in a 
 
 So with local go-playground you get:
 
-* all features of `go-mode` will work in `go-playground`
+* all features of [go-mode](https://github.com/dominikh/go-mode.el) will work in `go-playground`
 * snippets saved in the subdirectory under GOPATH, it helps you keep library of interesting snippets
 * you can split the snippet code on any number of files
 * no containers and no restrictions on compile time so you can test the complex code
@@ -42,6 +42,10 @@ Mode not offers default bindings except `Ctl-Return`. Just left the space for yo
 For easy running the template declares `main` package with defined `main()` function. Each snippet saved to its own
 directory (named by timestamp by default). Remember `go-playground` runs the compiler as `go run *.go` so any sources
 from the snippet directory will be included.
+
+Example screen after creation of a new snippet:
+
+[!screenshot](playground-screenshot.png)
 
 ## Similar projects
 
