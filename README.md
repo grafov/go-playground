@@ -45,7 +45,7 @@ from the snippet directory will be included.
 
 Example screen after creation of a new snippet:
 
-[!screenshot](playground-screenshot.png)
+![screenshot](playground-screenshot.png)
 
 ## Similar projects
 
