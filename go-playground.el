@@ -175,7 +175,7 @@ Tries to look for a URL at point."
   "Get unique directory under GOPATH/`go-playground-basedir`."
   (let ((dir-name (concat go-playground-basedir "/"
                           (if (and prefix go-playground-ask-for-file-name) (concat prefix "-"))
-                          (time-stamp-string "%:y-%02m-%02d-%02H:%02M:%02S"))))
+                          (time-stamp-string "at-%:y-%02m-%02d-%02H%02M%02S"))))
     (make-directory dir-name t)
     dir-name))
 
