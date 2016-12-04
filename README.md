@@ -36,9 +36,9 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
 ### Quick start
 
-#. From any mode run `M-x go-playground` for start a new playground buffer filled with basic template for `main` package (see the picture below).
-#. Add your code and the press `Ctl-Return` (bind for the command `go-playground-run`). It will save, compile and exec the snippet code.
-#. When you played enough with this snippet just run `M-x go-playground-rm`. It will remove the current snippet with its directory and all files.
+1. From any mode run `M-x go-playground` for start a new playground buffer filled with basic template for `main` package (see the picture below).
+1. Add your code and the press `Ctl-Return` (bind for the command `go-playground-run`). It will save, compile and exec the snippet code.
+1. When you played enough with this snippet just run `M-x go-playground-rm`. It will remove the current snippet with its directory and all files.
 
 Mode not offers default bindings except `Ctl-Return`. It just lefts the space for you.
 
