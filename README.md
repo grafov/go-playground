@@ -46,7 +46,7 @@ For easy running the template declares `main` package with defined `main()` func
 directory (named by timestamp by default). Remember `go-playground` runs the compiler as `go run *.go` so any sources
 from the snippet directory will be included.
 
-### List of interactive functiong
+### List of interactive functions
 
 <!---
 #+ORGTBL: SEND keys orgtbl-to-gfm
