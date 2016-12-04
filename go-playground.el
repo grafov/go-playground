@@ -62,7 +62,7 @@ By default it will be created as snippet.go"
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
   :lighter ""
-  :keymap '(([C-return] . go-playground-save-and-run))
+  :keymap '(([C-return] . go-playground-exec))
   (setq mode-name "Play(Go)"))
 
 (defun go-playground-snippet-file-name(&optional snippet-name)
@@ -72,8 +72,13 @@ By default it will be created as snippet.go"
                          ("snippet"))))
     (concat (go-playground-snippet-unique-dir file-name) "/" file-name ".go")))
 
+; obsoleted by go-playground-exec
 (defun go-playground-save-and-run ()
-  "Run go compiler on a current buffer."
+  (interactive)  
+  (go-playground-exec))
+  
+(defun go-playground-exec ()
+  "Save the buffer then runs Go compiler for executing the code."
   (interactive)
   (save-buffer t)
   (make-local-variable 'compile-command)
