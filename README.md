@@ -34,9 +34,11 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
 ## Usage
 
-* `M-x go-playground` for start playground buffer for a new snippet from any mode
-* `Ctl-Return` for compile and run your code
-* `M-x go-playground-rm` for removing the current snippet (with its directory and all files) after you done with it
+### Quick start
+
+#. From any mode run `M-x go-playground` for start a new playground buffer filled with basic template for `main` package (see the picture below).
+#. Add your code and the press `Ctl-Return` (bind for the command `go-playground-run`). It will save, compile and exec the snippet code.
+#. When you played enough with this snippet just run `M-x go-playground-rm`. It will remove the current snippet with its directory and all files.
 
 Mode not offers default bindings except `Ctl-Return`. It just lefts the space for you.
 
@@ -44,22 +46,26 @@ For easy running the template declares `main` package with defined `main()` func
 directory (named by timestamp by default). Remember `go-playground` runs the compiler as `go run *.go` so any sources
 from the snippet directory will be included.
 
+### List of interactive functiong
+
 <!---
 #+ORGTBL: SEND keys orgtbl-to-gfm
 | Function name            | Description                                                                |
 |--------------------------+----------------------------------------------------------------------------|
 | `go-playground`          | Create a new playground buffer with basic template for the `main` package. |
 | `go-playground-download` | Download the snippet from the URL at play.golang.org.                      |
-| `go-playground-rm`       | Remove the snippet with its directory with all files.                      |
+| `go-playground-exec`     | Save, compile and run the code of the snippet.                             |
 | `go-playground-upload`   | Upload the buffer to play.golang.org and return the short URL.             |
+| `go-playground-rm`       | Remove the snippet with its directory with all files.                      |
 -->
 <!--- BEGIN RECEIVE ORGTBL keys -->
 | Function name | Description |
 |---|---|
 | `go-playground` | Create a new playground buffer with basic template for the `main` package. |
 | `go-playground-download` | Download the snippet from the URL at play.golang.org. |
-| `go-playground-rm` | Remove the snippet with its directory with all files. |
+| `go-playground-exec` | Save, compile and run the code of the snippet. |
 | `go-playground-upload` | Upload the buffer to play.golang.org and return the short URL. |
+| `go-playground-rm` | Remove the snippet with its directory with all files. |
 <!--- END RECEIVE ORGTBL keys -->
 
 Example screen after creation of a new snippet:
