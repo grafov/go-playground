@@ -1,3 +1,4 @@
+<!--*- mode:markdown;mode:orgtbl -*-->
 # Local Golang playground [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
 The simple mode for GNU/Emacs for setting up local [Go language](http://golang.org) playground with features similar 
@@ -37,11 +38,29 @@ Install `gist-buffer` from MELPA if you want publish gists on github.com.
 * `Ctl-Return` for compile and run your code
 * `M-x go-playground-rm` for removing the current snippet (with its directory and all files) after you done with it
 
-Mode not offers default bindings except `Ctl-Return`. Just left the space for you.
+Mode not offers default bindings except `Ctl-Return`. It just lefts the space for you.
 
 For easy running the template declares `main` package with defined `main()` function. Each snippet saved to its own
 directory (named by timestamp by default). Remember `go-playground` runs the compiler as `go run *.go` so any sources
 from the snippet directory will be included.
+
+<!---
+#+ORGTBL: SEND keys orgtbl-to-gfm
+| Function name            | Description                                                                |
+|--------------------------+----------------------------------------------------------------------------|
+| `go-playground`          | Create a new playground buffer with basic template for the `main` package. |
+| `go-playground-download` | Download the snippet from the URL at play.golang.org.                      |
+| `go-playground-rm`       | Remove the snippet with its directory with all files.                      |
+| `go-playground-upload`   | Upload the buffer to play.golang.org and return the short URL.             |
+-->
+<!--- BEGIN RECEIVE ORGTBL keys -->
+| Function name | Description |
+|---|---|
+| `go-playground` | Create a new playground buffer with basic template for the `main` package. |
+| `go-playground-download` | Download the snippet from the URL at play.golang.org. |
+| `go-playground-rm` | Remove the snippet with its directory with all files. |
+| `go-playground-upload` | Upload the buffer to play.golang.org and return the short URL. |
+<!--- END RECEIVE ORGTBL keys -->
 
 Example screen after creation of a new snippet:
 
