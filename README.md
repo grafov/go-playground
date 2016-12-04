@@ -1,5 +1,5 @@
 <!--*- mode:markdown;mode:orgtbl -*-->
-# Local Golang playground [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
+# Local Golang playground [![MELPA Stable](https://stable.melpa.org/packages/go-playground-badge.svg)](https://stable.melpa.org/#/go-playground) [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
 The simple mode for GNU/Emacs for setting up local [Go language](http://golang.org) playground with features similar 
 (and with help of `go-mode` even outperform!) to [play.golang.org](http://play.golang.org). This is not a wrapper for working with play.golang.org from Emacs,
