@@ -50,6 +50,13 @@ By default it will be created as snippet.go"
   :type 'boolean
   :group 'go-playground)
 
+(defgroup go-playground nil
+  "Options specific to Go Playground."
+  :group 'go)
+
+(defcustom go-playground-basedir "~/go/src/playground"
+  "Base directory for playground snippets.  Better to set it under GOPATH."
+  :group 'go-playground)
 
 (define-minor-mode go-playground-mode
   "A place for playing with golang code and export it in short snippets."
@@ -84,33 +91,14 @@ By default it will be created as snippet.go"
 ;;       (set-buffer snippet-buf)
 ;;       (insert not-used-var))))
 
-(defun go-playground-send-to-play.golang.org ()
-  (interactive)
-  (goto-char (point-min))
-  (forward-line)
-  (insert (go-play-buffer)))
-
-(defgroup go-playground nil
-  "Options specific to Go Playground."
-  :group 'go)
-
-(defcustom go-playground-basedir "~/go/src/playground"
-  "Base directory for playground snippets.  Better to set it under GOPATH."
-  :group 'go-playground)
-
 ;;;###autoload
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
   (interactive)
   (let ((snippet-file-name (go-playground-snippet-file-name)))
     (switch-to-buffer (create-file-buffer snippet-file-name))
-    (insert "// -*- mode:go;mode:go-playground -*-
-// snippet of code @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
-package main
-
-// === Go Playground ===
-// Execute the snippet with Ctl-Return
-// Remove this snippet completely with M-x `go-playground-rm`
+	(go-playground-insert-template-head "snippet of code")
+(insert "package main
 
 import (
     \"fmt\"
@@ -126,6 +114,16 @@ func main() {
     (go-playground-mode)
     (set-visited-file-name snippet-file-name t)))
 
+(defun go-playground-insert-template-head (description)
+  (insert "// -*- mode:go;mode:go-playground -*-
+// " description " @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
+
+// === Go Playground ===
+// Execute the snippet with Ctl-Return
+// Remove this snippet completely with M-x `go-playground-rm`
+
+"))
+
 ;;;###autoload
 (defun go-playground-rm ()  
   "Remove files of the current snippet together with directory of this snippet."
@@ -139,6 +137,34 @@ func main() {
     "Obsoleted by `go-playground-rm'."
   (interactive)
   (go-playground-rm))
+
+;;;###autoload
+(defun go-playground-download (url)
+  "Download a paste from the play.golang.org and insert it in a new local playground buffer.
+Tries to look for a URL at point."
+  (interactive (list (read-from-minibuffer "Playground URL: " (ffap-url-p (ffap-string-at-point 'url)))))
+  (with-current-buffer
+      (let ((url-request-method "GET") url-request-data url-request-extra-headers)
+        (url-retrieve-synchronously (concat url ".go")))
+    (let* ((snippet-file-name (go-playground-snippet-file-name)) (buffer (create-file-buffer snippet-file-name)))
+      (goto-char (point-min))
+      (re-search-forward "\n\n")
+      (copy-to-buffer buffer (point) (point-max))
+      (kill-buffer)
+      (with-current-buffer buffer
+		(goto-char (point-min))
+		(go-playground-insert-template-head (concat url " imported"))
+		(go-mode)
+		(go-playground-mode)
+		(set-visited-file-name snippet-file-name t)
+        (switch-to-buffer buffer)))))
+
+(defun go-playground-upload ()
+  "Upload the current buffer to play.golang.org and return the short URL of the playground."
+  (interactive)
+  (goto-char (point-min))
+  (forward-line)
+  (insert (go-play-buffer)))
 
 (defun go-playground-snippet-unique-dir (prefix)
   "Get unique directory under GOPATH/`go-playground-basedir`."
