@@ -74,6 +74,29 @@ compiler as `go run *.go` so any sources from the snippet directory will be incl
 | `go-playground-rm` | Remove the snippet with its directory with all files. |
 <!--- END RECEIVE ORGTBL keys -->
 
+### List of customizable variables
+
+<!---
+#+ORGTBL: SEND vars orgtbl-to-gfm
+| Function name                    | Description                                                                                     |
+|----------------------------------+-------------------------------------------------------------------------------------------------|
+| `go-playground-ask-for-filename` | Ask for the snippet filename on a new playground creation. By default it got name `snippet.go`. |
+| `go-playground-basedir`          | Default directory where snippets dirs will placed. Each new snippet got a new dir under this.   |
+|                                  | It has sense place the default directory under GOPATH. Var introduced in the release 1.1.       |
+| `go-playground-confirm-deletion` | Ask for confirmation before snippet deletion.                                                   |
+|                                  | It may be annoying so you can switch confirmations off. Var introduced in the release 1.2.      |
+-->
+<!--- BEGIN RECEIVE ORGTBL vars -->
+| Function name | Description |
+|---|---|
+| `go-playground-ask-for-filename` | Ask for the snippet filename on a new playground creation. By default it got name `snippet.go`. |
+| `go-playground-basedir` | Default directory where snippets dirs will placed. Each new snippet got a new dir under this. |
+|  | It has sense place the default directory under GOPATH. Var introduced in the release 1.1. |
+| `go-playground-confirm-deletion` | Ask for confirmation before snippet deletion. |
+|  | It may be annoying so you can switch confirmations off. Var introduced in the release 1.2. |
+<!--- END RECEIVE ORGTBL vars -->
+
+
 Example screen after creation of a new snippet:
 
 ![screenshot](playground-screenshot.png)
