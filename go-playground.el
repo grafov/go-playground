@@ -133,9 +133,9 @@ func main() {
 (defun go-playground-rm ()  
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
-  (save-buffer)
   (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
-	  (progn (delete-directory (file-name-directory (buffer-file-name)) t t)
+	  (progn (save-buffer)
+			 (delete-directory (file-name-directory (buffer-file-name)) t t)
 			 (kill-buffer))
 	(message "Won't delete this! Because %s is not under the path %s. Remove the snippet manually!"
 			 (buffer-file-name) go-playground-basedir)))
