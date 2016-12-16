@@ -47,7 +47,7 @@
   "Options specific to Go Playground."
   :group 'go)
 
-(defcustom go-playground-ask-for-file-name nil
+(defcustom go-playground-ask-file-name nil
   "Non-nil means we ask for a name for the snippet.
 
 By default it will be created as snippet.go"
@@ -74,7 +74,7 @@ By default confirmation required."
 
 (defun go-playground-snippet-file-name(&optional snippet-name)
   (let ((file-name (cond (snippet-name)
-                         (go-playground-ask-for-file-name
+                         (go-playground-ask-file-name
                           (read-string "Go Playground filename: "))
                          ("snippet"))))
     (concat (go-playground-snippet-unique-dir file-name) "/" file-name ".go")))
@@ -188,7 +188,7 @@ Tries to look for a URL at point."
 (defun go-playground-snippet-unique-dir (prefix)
   "Get unique directory under GOPATH/`go-playground-basedir`."
   (let ((dir-name (concat go-playground-basedir "/"
-                          (if (and prefix go-playground-ask-for-file-name) (concat prefix "-"))
+                          (if (and prefix go-playground-ask-file-name) (concat prefix "-"))
                           (time-stamp-string "at-%:y-%02m-%02d-%02H%02M%02S"))))
     (make-directory dir-name t)
     dir-name))
