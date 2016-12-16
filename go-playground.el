@@ -125,7 +125,7 @@ func main() {
 
 // === Go Playground ===
 // Execute the snippet with Ctl-Return
-// Remove this snippet completely with M-x `go-playground-rm`
+// Remove the snippet completely with its dir and all files M-x `go-playground-rm`
 
 "))
 
