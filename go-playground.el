@@ -43,6 +43,10 @@
 (require 'compile)
 (require 'time-stamp)
 
+(defgroup go-playground nil
+  "Options specific to Go Playground."
+  :group 'go)
+
 (defcustom go-playground-ask-for-file-name nil
   "Non-nil means we ask for a name for the snippet.
 
@@ -50,9 +54,12 @@ By default it will be created as snippet.go"
   :type 'boolean
   :group 'go-playground)
 
-(defgroup go-playground nil
-  "Options specific to Go Playground."
-  :group 'go)
+(defcustom go-playground-confirm-deletion t
+  "Non-nil means you will be asked for confirmation on the snippet deletion with `go-playground-rm'.
+
+By default confirmation required."
+  :type 'boolean
+  :group 'go-playground)
 
 (defcustom go-playground-basedir "~/go/src/playground"
   "Base directory for playground snippets.  Better to set it under GOPATH."
@@ -134,9 +141,13 @@ func main() {
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
   (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
-	  (progn (save-buffer)
-			 (delete-directory (file-name-directory (buffer-file-name)) t t)
-			 (kill-buffer))
+      (if (or (not go-playground-confirm-deletion)
+	       (y-or-n-p (format "Do you want delete whole snippet dir %s? "
+				 (file-name-directory (buffer-file-name)))))
+		  (progn
+			(save-buffer)
+			(delete-directory (file-name-directory (buffer-file-name)) t t)
+			(kill-buffer)))
 	(message "Won't delete this! Because %s is not under the path %s. Remove the snippet manually!"
 			 (buffer-file-name) go-playground-basedir)))
 
