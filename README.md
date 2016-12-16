@@ -1,11 +1,12 @@
-<!--*- mode:markdown;mode:orgtbl -*-->
+<!--*- mode:markdown;mode:orgtbl;fill-column:99 -*-->
 # Local Golang playground [![MELPA Stable](https://stable.melpa.org/packages/go-playground-badge.svg)](https://stable.melpa.org/#/go-playground) [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
 The simple mode for GNU/Emacs for setting up local [Go language](http://golang.org) playground with
 features similar (and with help of `go-mode` even outperform!) service at
-[play.golang.org](http://play.golang.org).  This is not a wrapper for working with play.golang.org
-from Emacs (it already did by original go-mode), this is complete alternative for setting local
-playground inside Emacs without using browser for experiments with code snippets.
+[play.golang.org](http://play.golang.org). You may treat it like the simple REPL for Go. This is
+not a wrapper for working with play.golang.org from Emacs (it already did by original go-mode),
+this is complete alternative for setting local playground inside Emacs without using browser for
+experiments with code snippets.
 
 Web playground at play.golang.org is nice idea. It has not require setup and it executes your code
 in a restricted environment where you can't damage you system. But it brings many restrictions too.
