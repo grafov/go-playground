@@ -35,6 +35,8 @@ Install `go-playground` from MELPA:
 If you want share snippets use `go-play-buffer` from `go-mode`.
 Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
+The mirror repository of the project: https://notabug.org/grafov/go-playground
+
 ## Usage
 
 ### Quick start
