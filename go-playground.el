@@ -135,7 +135,6 @@ func main() {
 
 "))
 
-;;;###autoload
 (defun go-playground-rm ()  
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
