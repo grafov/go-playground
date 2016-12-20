@@ -68,9 +68,8 @@ By default confirmation required."
 (define-minor-mode go-playground-mode
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
-  :lighter ""
-  :keymap '(([C-return] . go-playground-exec))
-  (setq mode-name "Play(Go)"))
+  :lighter "Play(Go)"
+  :keymap '(([C-return] . go-playground-exec)))
 
 (defun go-playground-snippet-file-name(&optional snippet-name)
   (let ((file-name (cond (snippet-name)
