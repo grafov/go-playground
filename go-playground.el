@@ -90,18 +90,6 @@ By default confirmation required."
   (make-local-variable 'compile-command)
   (compile (concat go-command " run *.go")))
 
-;; draft
-;; (defun go-playground-print-unused ()
-;;   "Uncompleted function in development.  Don't use it."
-;;   (interactive)
-;;   (save-buffer t)
-;;   (let ((snippet-buf (current-buffer)) (compile-buf (compile (go-run-get-program (go-run-arguments)))))
-;;     (set-buffer compile-buf)
-;;     (looking-at "^.*:[0-9]+: \\([_.a-zA-Z0-9]+\\) declared and not used")
-;;     (let ((not-used-var (match-string 0)))
-;;       (set-buffer snippet-buf)
-;;       (insert not-used-var))))
-
 ;;;###autoload
 (defun go-playground ()
   "Run playground for Go language in a new buffer."
