@@ -184,9 +184,8 @@ Tries to look for a URL at point."
 
 (defun go-playground-inside ()
   "Is the current buffer is valid go-playground buffer."
-  (and (boundp 'go-playground-mode) go-playground-mode
-       (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
-		   t)))
+  (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
+	  (bound-and-true-p go-playground-mode)))
 
 (provide 'go-playground)
 ;;; go-playground.el ends here
