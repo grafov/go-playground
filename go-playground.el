@@ -78,17 +78,19 @@ By default confirmation required."
                          ("snippet"))))
     (concat (go-playground-snippet-unique-dir file-name) "/" file-name ".go")))
 
-; obsoleted by go-playground-exec
+; 
 (defun go-playground-save-and-run ()
+  "Obsoleted by go-playground-exec."
   (interactive)  
   (go-playground-exec))
   
 (defun go-playground-exec ()
   "Save the buffer then runs Go compiler for executing the code."
   (interactive)
-  (save-buffer t)
-  (make-local-variable 'compile-command)
-  (compile (concat go-command " run *.go")))
+  (if  (go-playground-inside)  
+	  (save-buffer t)
+	(make-local-variable 'compile-command)
+	(compile (concat go-command " run *.go"))))
 
 ;;;###autoload
 (defun go-playground ()
@@ -126,10 +128,10 @@ func main() {
 (defun go-playground-rm ()  
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
-  (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
+  (if (go-playground-inside)
       (if (or (not go-playground-confirm-deletion)
-	       (y-or-n-p (format "Do you want delete whole snippet dir %s? "
-				 (file-name-directory (buffer-file-name)))))
+			  (y-or-n-p (format "Do you want delete whole snippet dir %s? "
+								(file-name-directory (buffer-file-name)))))
 		  (progn
 			(save-buffer)
 			(delete-directory (file-name-directory (buffer-file-name)) t t)
@@ -167,9 +169,10 @@ Tries to look for a URL at point."
 (defun go-playground-upload ()
   "Upload the current buffer to play.golang.org and return the short URL of the playground."
   (interactive)
-  (goto-char (point-min))
-  (forward-line)
-  (insert (go-play-buffer)))
+  (if (go-playground-inside)
+	  (goto-char (point-min))
+	(forward-line)
+	(insert (go-play-buffer))))
 
 (defun go-playground-snippet-unique-dir (prefix)
   "Get unique directory under GOPATH/`go-playground-basedir`."
@@ -178,6 +181,12 @@ Tries to look for a URL at point."
                           (time-stamp-string "at-%:y-%02m-%02d-%02H%02M%02S"))))
     (make-directory dir-name t)
     dir-name))
+
+(defun go-playground-inside ()
+  "Is the current buffer is valid go-playground buffer."
+  (and (boundp 'go-playground-mode) go-playground-mode
+       (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
+		   t)))
 
 (provide 'go-playground)
 ;;; go-playground.el ends here
