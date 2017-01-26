@@ -88,10 +88,11 @@ By default confirmation required."
 (defun go-playground-exec ()
   "Save the buffer then runs Go compiler for executing the code."
   (interactive)
-  (if  (go-playground-inside)  
-	  (save-buffer t)
-	(make-local-variable 'compile-command)
-	(compile (concat go-command " run *.go"))))
+  (if (go-playground-inside)
+	  (progn
+		(save-buffer t)
+		(make-local-variable 'compile-command)
+		(compile (concat go-command " run *.go")))))
 
 ;;;###autoload
 (defun go-playground ()
