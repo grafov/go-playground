@@ -64,6 +64,7 @@ By default confirmation required."
 
 (defcustom go-playground-basedir "~/go/src/playground"
   "Base directory for playground snippets.  Better to set it under GOPATH."
+  :type 'file
   :group 'go-playground)
 
 (define-minor-mode go-playground-mode
