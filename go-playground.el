@@ -108,8 +108,7 @@ import (
 )
 
 func main() {
-    fmt.Println(\"Results:\")
-
+        fmt.Println(\"Results:\")
 }
 ")
     (backward-char 3)
