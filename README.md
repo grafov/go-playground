@@ -8,9 +8,9 @@ not a wrapper for working with play.golang.org from Emacs (it is already did by 
 this is complete alternative for setting local playground inside Emacs without using browser for
 experiments with code snippets.
 
-Web playground at play.golang.org is nice idea. It has not require setup and it executes your code
-in a restricted environment where you can't damage you system. But it brings many restrictions too
-especially when you want use additional helpers for working with your code: formatters, code
+Web playground at play.golang.org is a nice idea. It has not require setup and it executes your
+code in a restricted environment where you can't damage you system. But it brings many restrictions
+too especially when you want use additional helpers for working with your code: formatters, code
 completers etc. Emacs offers many such tools for Go development so it is the most comfortable play
 with snippets inside Emacs instead of rude webeditor. Of course local playground requres you to
 setup Go environment but if you developing in Go (or you want to do it) you are anyway would need
