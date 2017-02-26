@@ -105,11 +105,11 @@ By default confirmation required."
 (insert "package main
 
 import (
-    \"fmt\"
+	\"fmt\"
 )
 
 func main() {
-        fmt.Println(\"Results:\")
+	fmt.Println(\"Results:\")
 }
 ")
     (backward-char 3)
