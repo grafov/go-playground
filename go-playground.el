@@ -80,12 +80,12 @@ By default confirmation required."
                          ("snippet"))))
     (concat (go-playground-snippet-unique-dir file-name) "/" file-name ".go")))
 
-; 
+;
 (defun go-playground-save-and-run ()
   "Obsoleted by go-playground-exec."
-  (interactive)  
+  (interactive)
   (go-playground-exec))
-  
+
 (defun go-playground-exec ()
   "Save the buffer then runs Go compiler for executing the code."
   (interactive)
@@ -127,7 +127,7 @@ func main() {
 
 "))
 
-(defun go-playground-rm ()  
+(defun go-playground-rm ()
   "Remove files of the current snippet together with directory of this snippet."
   (interactive)
   (if (go-playground-inside)
