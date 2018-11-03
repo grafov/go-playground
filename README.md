@@ -18,11 +18,12 @@ to setup `go-mode` and helper tools for working with code in a comfortable way.
 
 So with local go-playground you get:
 
-* all features of [go-mode](https://github.com/dominikh/go-mode.el) will work in `go-playground`
+* all features of [go-mode](https://github.com/dominikh/go-mode.el) will work in the `go-playground`
 * snippets saved in the subdirectory under GOPATH, it helps you keep library of interesting snippets
-* you can split the snippet code on any number of files
+* split the snippet code into arbitrary number of files (`snippet.go` is default name)
 * no containers and no restrictions on compile time so you can test the complex code
 * free for using any external packages from your GOPATH
+* use vendored packages in your snippet dir
 
 ## Install
 
