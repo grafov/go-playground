@@ -1,6 +1,6 @@
 ;;; go-playground.el --- Local Golang playground for short snippets.
 
-;; Copyright (C) 2015-2017  Alexander I.Grafov (axel)
+;; Copyright (C) 2015-2018  Alexander I.Grafov (axel)
 
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
