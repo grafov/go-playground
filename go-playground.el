@@ -5,7 +5,7 @@
 ;; Author: Alexander I.Grafov (axel) <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
-;; Version: 1.1
+;; Version: 1.4
 ;; Package-Requires: ((emacs "24") (go-mode "1.4.0") (gotest "0.13.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -67,6 +67,11 @@ By default confirmation required."
   :type 'file
   :group 'go-playground)
 
+(defcustom go-playground-go-command-args "run *.go"
+  "The arguments that passed to `go` compiler.`"
+  :type 'string
+  :group 'go-playground)
+
 (define-minor-mode go-playground-mode
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
@@ -93,7 +98,7 @@ By default confirmation required."
 	  (progn
 		(save-buffer t)
 		(make-local-variable 'compile-command)
-		(compile (concat go-command " run *.go")))))
+		(compile (concat go-command " " go-playground-go-command-args)))))
 
 ;;;###autoload
 (defun go-playground ()
