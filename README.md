@@ -18,11 +18,11 @@ to setup `go-mode` and helper tools for working with code in a comfortable way.
 
 ## Features
 
-* work under [go-mode](https://github.com/dominikh/go-mode.el) with all you plugins installed (like autocompletion, linters and so on)
-* playground files saved in the subdirectory under GOPATH that helps you keep library of useful snippets
+* it works under [go-mode](https://github.com/dominikh/go-mode.el) with all you plugins installed (like autocompletion, linters and so on)
+* the playground files saved in the subdirectory under GOPATH that helps you keep library of useful snippets
 * it could split the code into arbitrary number of files
-* could import any external packages from your GOPATH
-* use vendored packages in your snippet dir
+* it could import any external packages from your GOPATH
+* uses vendored packages in your snippet dir
 
 ## Install
 
