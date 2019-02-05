@@ -16,13 +16,12 @@ with snippets inside Emacs instead of rude webeditor. Of course local playground
 setup Go environment but if you developing in Go (or you want to do it) you are anyway would need
 to setup `go-mode` and helper tools for working with code in a comfortable way.
 
-So with local go-playground you get:
+## Features
 
-* all features of [go-mode](https://github.com/dominikh/go-mode.el) will work in the `go-playground`
-* snippets saved in the subdirectory under GOPATH, it helps you keep library of interesting snippets
-* split the snippet code into arbitrary number of files (`snippet.go` is default name)
-* no containers and no restrictions on compile time so you can test the complex code
-* free for using any external packages from your GOPATH
+* work under [go-mode](https://github.com/dominikh/go-mode.el) with all you plugins installed (like autocompletion, linters and so on)
+* playground files saved in the subdirectory under GOPATH that helps you keep library of useful snippets
+* it could split the code into arbitrary number of files
+* could import any external packages from your GOPATH
 * use vendored packages in your snippet dir
 
 ## Install
@@ -34,7 +33,7 @@ some ideas you want get working code as fast as possible. And `goimports` helps 
 
 Install `go-playground` from MELPA:
 
-    M-x package-install RET go-playground
+	M-x package-install RET go-playground
 
 If you want share snippets use `go-play-buffer` from `go-mode`.
 Install `gist-buffer` from MELPA if you want publish gists on github.com.
