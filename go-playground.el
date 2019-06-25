@@ -76,7 +76,8 @@ By default confirmation required."
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
   :lighter "Play(Go)"
-  :keymap '(([C-return] . go-playground-exec)))
+  :keymap '(([C-return] . go-playground-exec)
+			([M-return] . :cmd)))
 
 (defun go-playground-snippet-file-name(&optional snippet-name)
   (let ((file-name (cond (snippet-name)
@@ -138,6 +139,7 @@ func main() {
 
 // === Go Playground ===
 // Execute the snippet with Ctl-Return
+// Provide custom arguments to compile with Alt-Return
 // Remove the snippet completely with its dir and all files M-x `go-playground-rm`
 
 "))
