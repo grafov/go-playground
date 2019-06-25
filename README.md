@@ -68,6 +68,7 @@ compiler as `go run *.go` so any sources from the snippet directory will be incl
 | `go-playground`          | Create a new playground buffer with basic template for the `main` package. |
 | `go-playground-download` | Download the snippet from the URL at play.golang.org.                      |
 | `go-playground-exec`     | Save, compile and run the code of the snippet.                             |
+| `go-playground-cmd`      | Save the code then prompts for the command (compile-mode used).            |
 | `go-playground-upload`   | Upload the buffer to play.golang.org and return the short URL.             |
 | `go-playground-rm`       | Remove the snippet with its directory with all files.                      |
 -->
@@ -77,6 +78,7 @@ compiler as `go run *.go` so any sources from the snippet directory will be incl
 | `go-playground` | Create a new playground buffer with basic template for the `main` package. |
 | `go-playground-download` | Download the snippet from the URL at play.golang.org. |
 | `go-playground-exec` | Save, compile and run the code of the snippet. |
+| `go-playground-cmd` | Save the code then prompts for the command (compile-mode used). |
 | `go-playground-upload` | Upload the buffer to play.golang.org and return the short URL. |
 | `go-playground-rm` | Remove the snippet with its directory with all files. |
 <!--- END RECEIVE ORGTBL keys -->
