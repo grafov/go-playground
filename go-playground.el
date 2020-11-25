@@ -106,8 +106,8 @@ environment like \"GO111MODULE=on go\")."
 			  (read-string "Go Playground filename: "))
 			 ("snippet")))
 	 (snippet-dir (go-playground-snippet-unique-dir file-name)))
-    (cd snippet-dir)
-    (shell-command go-playground-init-command)
+    (let ((default-directory snippet-dir))
+      (call-process-shell-command go-playground-init-command))
     (concat snippet-dir "/" file-name ".go")))
 
 ;
