@@ -122,6 +122,13 @@ be used such way:
 1. Set `go-playground-go-command` to "GO111MODULE=on".
 1. Set `go-playground-init-command` to "go mod init".
 
+## Using with `lsp-mode`
+If you use `lsp-mode`, you can add a hook in your init file to cleanup the workspace when a snippet
+is removed, for example:
+
+    (defun my/go-playground-remove-lsp-workspace () (when-let ((root (lsp-workspace-root))) (lsp-workspace-folders-remove root)))
+    (add-hook 'go-playground-pre-rm-hook #'my/go-playground-remove-lsp-workspace)
+
 ## Similar projects
 
 * Try [go-scratch](https://github.com/shosti/go-scratch.el) it even simplier than
