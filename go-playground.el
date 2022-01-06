@@ -67,7 +67,7 @@ By default confirmation required."
   :type 'file
   :group 'go-playground)
 
-(defcustom go-playground-go-compiler-args "run *.go"
+(defcustom go-playground-go-compiler-args "run ./"
   "The arguments that passed to `go` compiler."
   :type 'string
   :group 'go-playground)
@@ -105,8 +105,8 @@ environment like \"GO111MODULE=on go\")."
 			 (go-playground-ask-file-name
 			  (read-string "Go Playground filename: "))
 			 ("snippet")))
-	 (snippet-dir (go-playground-snippet-unique-dir file-name)))
-    (cd snippet-dir)
+	 (snippet-dir (go-playground-snippet-unique-dir file-name))
+	 (default-directory snippet-dir))
     (shell-command go-playground-init-command)
     (concat snippet-dir "/" file-name ".go")))
 
