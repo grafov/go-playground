@@ -18,25 +18,29 @@ to setup `go-mode` and helper tools for working with code in a comfortable way.
 
 ## Features
 
-* it works under [go-mode](https://github.com/dominikh/go-mode.el) with all you plugins installed (like autocompletion, linters and so on)
-* the playground files saved in the subdirectory under GOPATH that helps you keep library of useful snippets
-* it could split the code into arbitrary number of files
-* it could import any external packages from your GOPATH
-* uses vendored packages in your snippet dir
-* could be used with modules with the latest Go versions
+* works under [go-mode](https://github.com/dominikh/go-mode.el) with all your plugins (like lsp, linters and so on)
+* keeps the library of snippets under a customized root path
+* allows split the code into arbitrary number of files
+* allows add new subdirs with subpackages
+* import any external packages
+* compatible with Go modules but could be customized for old GOPATH way
 
 ## Install
 
-Firstly install `go-mode` and `gotest` — these are mandatory. Setup any additional tools you want
-for Golang (see Emacs Wiki for guides or google for "emacs+golang"). Personally I recommend use
-`goimports` for automatically add import clauses to your snippets. Because usually when you test
-some ideas you want get working code as fast as possible. And `goimports` helps with it.
+First install `go-mode` and `gotest` — these are mandatory. Setup any additional tools you want
+for Golang (see Emacs Wiki for guides or google for "emacs+golang"). Minimal way is install `goimports` that automatically add import clauses to your snippets. For a fully functional Go IDE look at `lsp` and supplementary packages.
 
 Install `go-playground` from MELPA:
 
 	M-x package-install RET go-playground
 
-If you want share snippets use `go-play-buffer` from `go-mode`.
+Or:
+
+```
+(use-package go-playground)
+```
+
+If you want to share snippets use `go-play-buffer` from `go-mode`.
 Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
 The mirror repository of the project: https://notabug.org/grafov/go-playground.
@@ -121,6 +125,10 @@ be used such way:
 
 1. Set `go-playground-go-command` to "GO111MODULE=on".
 1. Set `go-playground-init-command` to "go mod init".
+
+## Snippet with multiple files and subpackages
+
+Explained here #19.
 
 ## Similar projects
 
