@@ -128,7 +128,7 @@ be used such way:
 
 ## Snippet with multiple files and subpackages
 
-Explained here #19.
+Explained here [#19](https://github.com/grafov/go-playground/issues/19).
 
 ## Similar projects
 
