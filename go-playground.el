@@ -94,6 +94,7 @@ environment like \"GO111MODULE=on go\")."
   :type 'string
   :group 'go-playground)
 
+;;;###autoload
 (define-minor-mode go-playground-mode
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
