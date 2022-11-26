@@ -1,6 +1,6 @@
 ;;; go-playground.el --- Local Golang playground for short snippets.
 
-;; Copyright (C) 2015-2021 Alexander I.Grafov and the project
+;; Copyright (C) 2015-2022 Alexander I.Grafov and the project
 ;; contibutors.
 
 ;; Author: Alexander I.Grafov <grafov@gmail.com>
@@ -106,9 +106,9 @@ environment like \"GO111MODULE=on go\")."
 			 (go-playground-ask-file-name
 			  (read-string "Go Playground filename: "))
 			 ("snippet")))
-	 (snippet-dir (go-playground-snippet-unique-dir file-name))
-	 (default-directory snippet-dir))
-    (shell-command go-playground-init-command)
+	 (snippet-dir (go-playground-snippet-unique-dir file-name)))
+    (let ((default-directory snippet-dir))
+      (call-process-shell-command go-playground-init-command))
     (concat snippet-dir "/" file-name ".go")))
 
 ;
