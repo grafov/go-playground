@@ -6,7 +6,7 @@
 ;; Author: Alexander I.Grafov <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
-;; Version: 1.7.1
+;; Version: 1.8.1
 ;; Package-Requires: ((emacs "24") (go-mode "1.4.0") (gotest "0.13.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -239,7 +239,7 @@ Tries to look for a URL at point."
   (and (bound-and-true-p go-playground-mode)
        buffer-file-name
        (string-prefix-p (file-truename go-playground-basedir)
-                        (file-truename buffer-file-name))))
+			(file-truename buffer-file-name))))
 
 (provide 'go-playground)
 ;;; go-playground.el ends here
