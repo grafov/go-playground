@@ -44,6 +44,7 @@
 (require 'gotest)
 (require 'compile)
 (require 'time-stamp)
+(require 'subr-x)
 
 (defgroup go-playground nil
   "Options specific to Go Playground."
@@ -81,6 +82,11 @@ in `go-mode`. You could use separate command specially for
 go-playground (for example run the compiler in special
 environment like \"GO111MODULE=on go\")."
   :type 'string
+  :group 'go-playground)
+
+(defcustom go-playground-pre-rm-hook nil
+  "Hook run before a snippet is removed."
+  :type 'hook
   :group 'go-playground)
 
 (defun go-playground-go ()
@@ -179,6 +185,7 @@ func main() {
 								(file-name-directory (buffer-file-name)))))
 		  (progn
 			(save-buffer)
+			(run-hooks 'go-playground-pre-rm-hook)
 			(delete-directory (file-name-directory (buffer-file-name)) t t)
 			(kill-buffer)))
 	(message "Won't delete this! Because %s is not under the path %s. Remove the snippet manually!"
