@@ -222,10 +222,9 @@ Tries to look for a URL at point."
 (defun go-playground-upload ()
   "Upload the current buffer to play.golang.org and return the short URL of the playground."
   (interactive)
-  (if (go-playground-inside)
-	  (goto-char (point-min))
-	(forward-line)
-	(insert (go-play-buffer))))
+  (if (not (go-playground-inside))
+      (message "Not in a Go Playground buffer!")
+    (go-play-buffer)))
 
 (defun go-playground-snippet-unique-dir (prefix)
   "Get unique directory under GOPATH/`go-playground-basedir`."
@@ -237,8 +236,10 @@ Tries to look for a URL at point."
 
 (defun go-playground-inside ()
   "Is the current buffer is valid go-playground buffer."
-  (if (string-match-p (file-truename go-playground-basedir) (file-truename (buffer-file-name)))
-	  (bound-and-true-p go-playground-mode)))
+  (and (bound-and-true-p go-playground-mode)
+       buffer-file-name
+       (string-prefix-p (file-truename go-playground-basedir)
+                        (file-truename buffer-file-name))))
 
 (provide 'go-playground)
 ;;; go-playground.el ends here
