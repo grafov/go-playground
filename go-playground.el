@@ -6,7 +6,7 @@
 ;; Author: Alexander I.Grafov <grafov@gmail.com>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
-;; Version: 1.8.1
+;; Version: 1.8.2
 ;; Package-Requires: ((emacs "24") (go-mode "1.4.0") (gotest "0.13.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -171,9 +171,11 @@ func main() {
 // " description " @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
 
 // === Go Playground ===
-// Execute the snippet with Ctl-Return
-// Provide custom arguments to compile with Alt-Return
-// Remove the snippet completely with its dir and all files M-x `go-playground-rm`
+// Execute the snippet with:                 Ctl-Return
+// Provide custom arguments to compile with: Alt-Return
+// Other useful commands:
+// - remove the snippet completely with its dir and all files: (go-playground-rm)
+// - upload the current buffer to playground.golang.org:       (go-playground-upload)
 
 "))
 
