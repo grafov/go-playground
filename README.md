@@ -43,10 +43,6 @@ Or:
 If you want to share snippets use `go-play-buffer` from `go-mode`.
 Install `gist-buffer` from MELPA if you want publish gists on github.com.
 
-The mirror repository of the project: https://notabug.org/grafov/go-playground.
-I really not think that this small project need the mirror but I just would like advertise a nice
-git hosting for FOSS. Try [notabug.org](https://notabug.org) for your projects! :)
-
 ## Usage
 
 ### Quick start
