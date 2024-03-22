@@ -17,16 +17,13 @@ setup Go environment but if you developing in Go (or you want to do it) you are 
 to setup `go-mode` and helper tools for working with code in a comfortable way.
 
 ## Features
-
-* works under [go-mode](https://github.com/dominikh/go-mode.el) with all your plugins (like lsp, linters and so on)
+* uses [go-mode](https://github.com/dominikh/go-mode.el) with all your plugins (like lsp, linters and so on)
+* allow to import external packages
 * keeps the library of snippets under a customized root path
-* allows split the code into arbitrary number of files
-* allows add new subdirs with subpackages
-* import any external packages
-* compatible with Go modules but could be customized for old GOPATH way
+* support multiple source filcces (or subpackages) for a snippet
+* compatible with Go modules
 
 ## Install
-
 First install `go-mode` and `gotest` — these are mandatory. Setup any additional tools you want
 for Golang (see Emacs Wiki for guides or google for "emacs+golang"). Minimal way is install `goimports` that automatically add import clauses to your snippets. For a fully functional Go IDE look at `lsp` and supplementary packages.
 
@@ -61,66 +58,29 @@ saved to its own directory (named by timestamp by default). Remember `go-playgro
 compiler as `go run *.go` so any sources from the snippet directory will be included.
 
 ### List of interactive functions
-
-<!---
-#+ORGTBL: SEND keys orgtbl-to-gfm
 | Function name            | Description                                                                |
-|--------------------------+----------------------------------------------------------------------------|
+|--------------------------|----------------------------------------------------------------------------|
 | `go-playground`          | Create a new playground buffer with basic template for the `main` package. |
 | `go-playground-download` | Download the snippet from the URL at play.golang.org.                      |
 | `go-playground-exec`     | Save, compile and run the code of the snippet.                             |
 | `go-playground-cmd`      | Save the code then prompts for the command (compile-mode used).            |
 | `go-playground-upload`   | Upload the buffer to play.golang.org and return the short URL.             |
 | `go-playground-rm`       | Remove the snippet with its directory with all files.                      |
--->
-<!--- BEGIN RECEIVE ORGTBL keys -->
-| Function name | Description |
-|---|---|
-| `go-playground` | Create a new playground buffer with basic template for the `main` package. |
-| `go-playground-download` | Download the snippet from the URL at play.golang.org. |
-| `go-playground-exec` | Save, compile and run the code of the snippet. |
-| `go-playground-cmd` | Save the code then prompts for the command (compile-mode used). |
-| `go-playground-upload` | Upload the buffer to play.golang.org and return the short URL. |
-| `go-playground-rm` | Remove the snippet with its directory with all files. |
-<!--- END RECEIVE ORGTBL keys -->
 
 ### List of customizable variables
-
-<!---
-#+ORGTBL: SEND vars orgtbl-to-gfm
 | Function name                    | Description                                                                                                                                                                             |
-|----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `go-playground-ask-filename`     | Ask for the snippet filename on a new playground creation. By default it got name `snippet.go`.                                                                                         |
 | `go-playground-basedir`          | Default directory where snippets dirs will placed. Each new snippet got a new dir under this. It has sense place the default directory under GOPATH. Var introduced in the release 1.1. |
 | `go-playground-confirm-deletion` | Ask for confirmation before snippet deletion. It may be annoying so you can switch confirmations off. Var introduced in the release 1.2.                                                |
-| `go-playground-go-command`       | Set a custom path to go command, possibly with environment (example: "CGO_ENABLED=0 /opt/bin/go").                                                                                      |
+| `go-playground-compile-command`  | Run compiler with custom args or run any other additional commands. By default it runs two command in sequence "go mod tidy; go mod run ./..."                                          |
 | `go-playground-init-command`     | Setup shell command that will be run once when a new snippet just created.                                                                                                              |
 | `go-playground-compiler-args`    | That arguments should be passed for the compiler.                                                                                                                                       |
--->
-<!--- BEGIN RECEIVE ORGTBL vars -->
-| Function name | Description |
-|---|---|
-| `go-playground-ask-filename` | Ask for the snippet filename on a new playground creation. By default it got name `snippet.go`. |
-| `go-playground-basedir` | Default directory where snippets dirs will placed. Each new snippet got a new dir under this. It has sense place the default directory under GOPATH. Var introduced in the release 1.1. |
-| `go-playground-confirm-deletion` | Ask for confirmation before snippet deletion. It may be annoying so you can switch confirmations off. Var introduced in the release 1.2. |
-| `go-playground-go-command` | Set a custom path to go command, possibly with environment (example: "CGO_ENABLED=0 /opt/bin/go"). |
-| `go-playground-init-command` | Setup shell command that will be run once when a new snippet just created. |
-| `go-playground-compiler-args` | That arguments should be passed for the compiler. |
-<!--- END RECEIVE ORGTBL vars -->
-
+| `go-playground-pre-rm-hook`      | Hook that should be run before a snippet is removed.                                                                                                                                    |
 
 Example screen after creation of a new snippet:
 
 ![screenshot](playground-screenshot.png)
-
-## Using with go modules
-
-By default the playground runs `go-command` as it defined in settings of `go-mode`. You could use
-special customized compiler path with `go-playground-go-command`. For using with modules it could
-be used such way:
-
-1. Set `go-playground-go-command` to "GO111MODULE=on".
-1. Set `go-playground-init-command` to "go mod init".
 
 ## Using with `lsp-mode`
 If you use `lsp-mode`, you can add a hook in your init file to cleanup the workspace when a snippet

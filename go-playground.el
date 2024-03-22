@@ -1,9 +1,9 @@
 ;;; go-playground.el --- Local Golang playground for short snippets.
 
-;; Copyright (C) 2015-2022 Alexander I.Grafov and the project
+;; Copyright (C) 2015-2024 Alexander I.Grafov and the project
 ;; contibutors.
 
-;; Author: Alexander I.Grafov <grafov@gmail.com>
+;; Author: Alexander I.Grafov <grafov@inet.name>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
 ;; Version: 1.8.2
@@ -69,18 +69,10 @@ By default confirmation required."
   :type 'file
   :group 'go-playground)
 
-(defcustom go-playground-go-compiler-args "run ./"
-  "The arguments that passed to `go` compiler."
-  :type 'string
-  :group 'go-playground)
+(defcustom go-playground-compile-command (concat go-command " mod tidy; " go-command " run ./...")
+  "The commands used for compilation.
 
-(defcustom go-playground-go-command ""
-  "The `go` compiler custom command.
-
-With empty value this option uses variable `go-command` defined
-in `go-mode`. You could use separate command specially for
-go-playground (for example run the compiler in special
-environment like \"GO111MODULE=on go\")."
+Use \";\" or any other appropriate shell separator if you need several commands in one session."
   :type 'string
   :group 'go-playground)
 
@@ -88,12 +80,6 @@ environment like \"GO111MODULE=on go\")."
   "Hook run before a snippet is removed."
   :type 'hook
   :group 'go-playground)
-
-(defun go-playground-go ()
-  "Evaluates really used compiler command with args."
-  (concat
-   (if (string= go-playground-go-command "")
-       go-command go-playground-go-command) " " go-playground-go-compiler-args))
 
 (defcustom go-playground-init-command "go mod init"
   "The shell command executed once when the snippet just created."
@@ -132,7 +118,7 @@ environment like \"GO111MODULE=on go\")."
 	  (progn
 		(save-buffer t)
 		(make-local-variable 'compile-command)
-		(compile (go-playground-go)))))
+		(compile go-playground-compile-command))))
 
 (defun go-playground-cmd (cmd)
   "Save the buffer then apply custom compile command from
