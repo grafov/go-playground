@@ -6,7 +6,7 @@
 ;; Author: Alexander I.Grafov <grafov@inet.name>
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
-;; Version: 1.8.2
+;; Version: 1.10.0
 ;; Package-Requires: ((emacs "24.4") (go-mode "1.4.0") (gotest "0.13.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -25,17 +25,10 @@
 ;;; Commentary:
 
 ;; Local playground for the Go programs similar to play.golang.org.
-;; `M-x go-playground` and type you golang code then make&run it with `C-c C-c`.
+;; `M-x go-playground` and type you Go code then run it with `C-c C-c`.
 
 ;; Playground works around `go-mode` and requires preconfigured environment
 ;; for Go language.
-
-;; I recommend you to use `goimports` instead of `gofmt` for automatically make
-;; import clauses. It very comfortable especially for experimenting with code
-;; in playground.
-
-;; You may push code to play.golang.org with go-mode' function `go-play-buffer`.
-
 ;;
 
 ;;; Code:
