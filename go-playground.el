@@ -1,4 +1,4 @@
-;;; go-playground.el --- Local Golang playground for short snippets.
+;;; go-playground.el --- Local Golang playground for short snippets
 
 ;; Copyright (C) 2015-2025 Alexander I.Grafov and the project
 ;; contributors.
@@ -7,7 +7,7 @@
 ;; URL: https://github.com/grafov/go-playground
 ;; Keywords: tools, golang
 ;; Version: 1.8.2
-;; Package-Requires: ((emacs "24") (go-mode "1.4.0") (gotest "0.13.0"))
+;; Package-Requires: ((emacs "24.4") (go-mode "1.4.0") (gotest "0.13.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 ;;; Commentary:
 
 ;; Local playground for the Go programs similar to play.golang.org.
-;; `M-x go-playground` and type you golang code then make&run it with `C-Return`.
+;; `M-x go-playground` and type you golang code then make&run it with `C-c C-c`.
 
 ;; Playground works around `go-mode` and requires preconfigured environment
 ;; for Go language.
@@ -58,7 +58,7 @@ By default it will be created as snippet.go"
   :group 'go-playground)
 
 (defcustom go-playground-confirm-deletion t
-  "Non-nil means you will be asked for confirmation on the snippet deletion with `go-playground-rm'.
+  "Non-nil means you will be asked for confirmation on the snippet deletion.
 
 By default confirmation required."
   :type 'boolean
@@ -72,7 +72,7 @@ By default confirmation required."
 (defcustom go-playground-compile-command (concat go-command " mod tidy; " go-command " run ./...")
   "The commands used for compilation.
 
-Use \";\" or any other appropriate shell separator if you need several commands in one session."
+Use \";\" or any other appropriate shell separator for calling several commands."
   :type 'string
   :group 'go-playground)
 
@@ -91,8 +91,7 @@ Use \";\" or any other appropriate shell separator if you need several commands 
   "A place for playing with golang code and export it in short snippets."
   :init-value nil
   :lighter "Play(Go)"
-  :keymap '(([C-return] . go-playground-exec)
-	    ([M-return] . go-playground-cmd)))
+  :keymap '(([?\C-c ?\C-c] . go-playground-exec)))
 
 (defun go-playground-snippet-file-name(&optional snippet-name)
   "Get the file name for the Go playground snippet SNIPPET-NAME."
@@ -105,23 +104,21 @@ Use \";\" or any other appropriate shell separator if you need several commands 
       (call-process-shell-command go-playground-init-command))
     (concat snippet-dir "/" file-name ".go")))
 
-(defun go-playground-save-and-run ()
-  "Obsoleted by go-playground-exec."
-  (interactive)
-
-  (go-playground-exec))
-
 (defun go-playground-exec ()
-  "Save the buffer and run the Go compiler to execute the code."
+  "Save the buffer then run Go compiler for executing the code.
+If called with \\<go-playground-mode-map>\\[universal-argument] prefix, prompt for a custom compile command."
   (interactive)
   (when (go-playground-inside)
-    (go-playground--save-and-compile go-playground-compile-command)))
+    (if current-prefix-arg
+        (go-playground-cmd)
+      (go-playground--save-and-compile go-playground-compile-command))))
 
-(defun go-playground-cmd (cmd)
-  "Save the buffer and run compile command CMD."
-  (interactive "scompile command: ")
+(defun go-playground-cmd ()
+  "Save the buffer then apply custom compile command."
+  (interactive)
   (when (go-playground-inside)
-    (go-playground--save-and-compile cmd)))
+    (let ((cmd (read-string "compile command: " go-playground-compile-command)))
+      (go-playground--save-and-compile cmd))))
 
 (defun go-playground--save-and-compile (cmd)
   "Save buffer and run compile command CMD."
@@ -152,12 +149,14 @@ func main() {
     (set-visited-file-name snippet-file-name t)))
 
 (defun go-playground-insert-template-head (description)
+  "Text prefixed by DESCRIPTION what inserted into a new playground buffer.
+It should have valid syntax of Go comment!"
   (insert "// -*- mode:go;mode:go-playground -*-
 // " description " @ " (time-stamp-string "%:y-%02m-%02d %02H:%02M:%02S") "
 
 // === Go Playground ===
-// Execute the snippet with:                 Ctl-Return
-// Provide custom arguments to compile with: Alt-Return
+// Execute the snippet with:                 C-c C-c
+// Provide custom arguments to compile with: C-u C-c C-c
 // Other useful commands:
 // - remove the snippet completely with its dir and all files: (go-playground-rm)
 // - upload the current buffer to playground.golang.org:       (go-playground-upload)
@@ -208,7 +207,8 @@ Tries to look for URL at point."
 	(switch-to-buffer buffer)))))
 
 (defun go-playground-upload ()
-  "Upload the current buffer to play.golang.org and return the short URL of the playground."
+  "Upload the current buffer to the play.golang.org.
+It returns the short URL of new playground."
   (interactive)
   (if (not (go-playground-inside))
       (message "Not in a Go Playground buffer!")
