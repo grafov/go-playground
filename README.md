@@ -46,8 +46,8 @@ want to publish gists on [github.com](http://github.com).
 
 1. Run `M-x go-playground` to start a new playground buffer filled with a basic template for the
    `main` package (see the screenshot below).
-1. Add your code and press `Ctl-Return` (bound to `go-playground-exec`), which saves, compiles, and
-   executes the snippet.
+1. Add your code and press `Ctl-C` twice (bound to `go-playground-exec`), which saves, compiles,
+   and executes the snippet.
 1. To remove the current snippet and its directory, run `M-x go-playground-rm`.
 
 ### List of interactive functions
