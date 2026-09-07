@@ -1,6 +1,7 @@
 <!--*- mode:markdown;mode:orgtbl;fill-column:99 -*-->
 # Local Golang playground [![MELPA Stable](https://stable.melpa.org/packages/go-playground-badge.svg)](https://stable.melpa.org/#/go-playground) [![MELPA](http://melpa.org/packages/go-playground-badge.svg)](http://melpa.org/#/go-playground)
 
+
 A simple mode for GNU/Emacs to set up a local [Go language](http://go.dev) playground, offering
 features similar to — and in some ways surpassing — the [play.golang.org](http://play.golang.org)
 service, thanks to `go-mode`. Treat it as a simple REPL for Go. Unlike `play.golang.org`, this mode
@@ -22,6 +23,8 @@ for Go development regardless.
 - Compatible with Go modules
 
 ## Install
+[![Repositories](https://repology.org/badge/vertical-allrepos/emacs%3Ago-playground.svg)](https://repology.org/project/emacs%3Ago-playground/versions)
+
 First, install `go-mode` and `gotest` — these are mandatory. Set up any additional tools you need for
 Go development (see the Emacs Wiki or search for "emacs+golang"). A minimal setup includes
 `goimports`, which automatically adds import clauses to your snippets. For a fully functional Go
